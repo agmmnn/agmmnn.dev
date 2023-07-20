@@ -23,12 +23,12 @@ To begin our SSL pinning bypass process, we'll need an Android emulator. Recomme
 
 ### Frida Packages for Python
 
-For Frida server, we’ll need to install a few python packages. In a terminal, type the following command: 
+For Frida server, we’ll need to install a few python packages. In a terminal, type the following command:
 
 ```bash
-$ pip install Frida 
-$ pip install objection 
-$ pip install frida-tools 
+$ pip install Frida
+$ pip install objection
+$ pip install frida-tools
 ```
 
 3. ADB Setup:
@@ -36,13 +36,13 @@ $ pip install frida-tools
 Ensure that you have Android Debug Bridge (ADB) installed on your computer. Use the following command to check if your emulator or connected Android device is detected:
 
 ```bash
-$ adb devices 
+$ adb devices
 ```
 
 ### Download and Configure Frida Server:
 
 ```bash
-$ adb shell getprop ro.product.cpu.abi 
+$ adb shell getprop ro.product.cpu.abi
 ```
 
 Based on the architecture, download the appropriate Frida server from the official GitHub repository (https://github.com/frida/frida/releases). Rename the downloaded file to "frida-server" for convenience.
@@ -58,6 +58,7 @@ Ensure the Frida server has the necessary permissions:
 ```bash
 $ adb shell "chmod 777 /data/local/tmp/frida-server"
 ```
+
 Launch Frida on the device by executing the following command:
 
 ```bash
@@ -67,7 +68,7 @@ $ adb shell "/data/local/tmp/frida-server &"
 Verify that Frida is running correctly by checking the attached processes on the device:
 
 ```bash
-$ frida-ps -U 
+$ frida-ps -U
 ```
 
 ### Bypass SSL Pinning with Frida:
@@ -86,4 +87,3 @@ After successfully bypassing SSL pinning with Frida, you can now intercept and a
 Install Burp Suite on your computer and set it up to intercept traffic.
 
 For Android devices, you'll need to install Burp Suite's SSL certificate in the emulator to handle HTTPS traffic. Follow the instructions provided in the link below to install the Burp Suite certificate in an Android emulator: http://agmmnn.dev/blog/installing-burp-suite-certificate-in-an-android-emulator
-

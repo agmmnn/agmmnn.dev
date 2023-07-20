@@ -31,13 +31,15 @@ $ pip install objection
 $ pip install frida-tools
 ```
 
-3. ADB Setup:
+### ADB Setup:
 
 Ensure that you have Android Debug Bridge (ADB) installed on your computer. Use the following command to check if your emulator or connected Android device is detected:
 
 ```bash
 $ adb devices
 ```
+
+> Note: if the adb does not work, delete the emulator's own adb. `Program Files\Microvirt\MEmu\adb.exe`
 
 ### Download and Configure Frida Server:
 

@@ -41,16 +41,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </a>
 
       <p>
-        Hey it is Gökçe
-      </p>
-      <p>
-        Read the blog posts or check
-        <LinkButton
-          className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
+        Hey it is Gökçe, mostly writing in Typescript, Python and Rust. The frameworks that I like to use are Next.js, React, Prisma, Tauri, Plasmo. Fan of terminal UI. Pentesting and reverse engineering in spare time.
       </p>
       {
         // only display if at least one social link is enabled
@@ -73,7 +64,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             <ul>
               {featuredPosts.map(({ data }) => (
                 <Card
-                  href={`/posts/${slugify(data)}`}
+                  href={`/blog/${slugify(data)}`}
                   frontmatter={data}
                   secHeading={false}
                 />
@@ -93,7 +84,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             ({ data }, index) =>
               index < 4 && (
                 <Card
-                  href={`/posts/${slugify(data)}`}
+                  href={`/blog/${slugify(data)}`}
                   frontmatter={data}
                   secHeading={false}
                 />
@@ -102,7 +93,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         }
       </ul>
       <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
+        <LinkButton href="/blog">
           All Posts
           <svg xmlns="http://www.w3.org/2000/svg"
             ><path

@@ -18,6 +18,14 @@ const { activeNav } = Astro.props;
   <div class="nav-container">
     <div class="top-nav-wrap">
       <a href="/" class="logo">
+            <img
+              src="/favicon.svg"
+              alt="AstroPaper Logo"
+              width="44"
+              height="44"
+            />
+      </a> 
+      <!-- <a href="/" class="logo">
         {
           LOGO_IMAGE.enable ? (
             <img
@@ -30,7 +38,7 @@ const { activeNav } = Astro.props;
             SITE.title
           )
         }
-      </a>
+      </a>  -->
       <nav id="nav-menu">
         <button
           class="hamburger-menu focus-outline"
@@ -46,8 +54,8 @@ const { activeNav } = Astro.props;
         </button>
         <ul id="menu-items" class="display-none sm:flex">
           <li>
-            <a href="/posts" class={activeNav === "posts" ? "active" : ""}>
-              Posts
+            <a href="/blog" class={activeNav === "posts" ? "active" : ""}>
+              Blog
             </a>
           </li>
           <li>

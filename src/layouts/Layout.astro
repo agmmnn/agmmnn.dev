@@ -47,7 +47,9 @@ const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image" content={socialImageURL.endsWith(".svg")
+    ? fallbackImageURL
+    : socialImageURL} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />

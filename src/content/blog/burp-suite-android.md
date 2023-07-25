@@ -9,9 +9,11 @@ tags:
   - Burp Suite
   - mitm
   - Android
-ogImage: ""
+ogImage: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*RAERHKFXhz1nAny3iFXltg.png"
 description: "Burp Suite is a powerful tool for web application security testing and analysis. If you're working with an Android emulator and want to capture and analyze its network traffic using Burp Suite..."
 ---
+
+![Installing Burp Suite Certificate in an Android Emulator](https://miro.medium.com/v2/resize:fit:720/format:webp/1*RAERHKFXhz1nAny3iFXltg.png)
 
 Burp Suite is a powerful tool for web application security testing and analysis. If you're working with an Android emulator and want to capture and analyze its network traffic using Burp Suite, follow these steps to install the Burp Suite certificate in the emulator:
 

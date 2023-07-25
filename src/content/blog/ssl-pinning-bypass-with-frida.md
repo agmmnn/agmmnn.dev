@@ -11,9 +11,11 @@ tags:
   - Android
   - frida
   - objection
-ogImage: ""
+ogImage: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Y6cZNeeIS2U_oUMah_iiEg.png"
 description: "SSL pinning is a security mechanism used by mobile applications to prevent man-in-the-middle attacks by verifying the server's SSL certificate. However, there are situations where developers or security testers..."
 ---
+
+![SSL Pinning Bypass For Android Using Frida](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Y6cZNeeIS2U_oUMah_iiEg.png)
 
 SSL pinning is a security mechanism used by mobile applications to prevent man-in-the-middle attacks by verifying the server's SSL certificate. However, there are situations where developers or security testers may need to bypass SSL pinning to analyze or modify network traffic. In this article, we will explore how to bypass SSL pinning on Android using Frida, a dynamic instrumentation toolkit.
 

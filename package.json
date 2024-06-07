@@ -1,49 +1,55 @@
 {
   "name": "astro-paper",
-  "version": "2.1.0",
+  "version": "4.2.0",
   "private": false,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && jampack ./dist",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "format:check": "prettier --plugin-search-dir=. --check .",
-    "format": "prettier --plugin-search-dir=. --write .",
+    "format:check": "prettier --check . --plugin=prettier-plugin-astro",
+    "format": "prettier --write . --plugin=prettier-plugin-astro",
     "cz": "cz",
     "prepare": "husky install",
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/rss": "^2.4.3",
-    "astro": "^2.8.5",
-    "fuse.js": "^6.6.2",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/rss": "^4.0.6",
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^4.10.0",
+    "fuse.js": "^7.0.0",
     "github-slugger": "^2.0.0",
     "remark-collapse": "^0.1.2",
-    "remark-toc": "^8.0.1",
-    "satori": "^0.10.1",
-    "tailwindcss": "^3.3.3"
+    "remark-toc": "^9.0.0",
+    "satori": "^0.10.13",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@astrojs/react": "^2.2.1",
-    "@astrojs/sitemap": "^2.0.0",
-    "@astrojs/tailwind": "^4.0.0",
-    "@tailwindcss/typography": "^0.5.9",
+    "@astrojs/react": "^3.5.0",
+    "@astrojs/sitemap": "^3.1.5",
+    "@astrojs/tailwind": "^5.1.0",
+    "@divriots/jampack": "^0.24.4",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/github-slugger": "^2.0.0",
-    "@types/react": "^18.2.15",
-    "@typescript-eslint/parser": "^6.1.0",
-    "astro-eslint-parser": "^0.14.0",
+    "@types/react": "^18.3.3",
+    "@typescript-eslint/parser": "^7.12.0",
+    "astro-eslint-parser": "^1.0.2",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.45.0",
-    "eslint-plugin-astro": "^0.27.2",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.4.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "eslint": "^9.4.0",
+    "eslint-plugin-astro": "^1.2.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.1",
+    "prettier-plugin-astro": "^0.14.0",
+    "prettier-plugin-tailwindcss": "^0.6.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "taze": "^0.13.8"
   },
   "config": {
     "commitizen": {
@@ -51,8 +57,8 @@
     }
   },
   "lint-staged": {
-    "*": [
-      "prettier --plugin-search-dir=. --write"
+    "*.{js,jsx,ts,tsx,md,mdx,json,astro}": [
+      "prettier --write --plugin=prettier-plugin-astro"
     ]
   }
 }

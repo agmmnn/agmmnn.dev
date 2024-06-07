@@ -10,7 +10,7 @@ AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog them
 
 This theme follows best practices and provides accessibility out of the box. Light and dark mode are supported by default. Moreover, additional color schemes can also be configured.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. Read [the blog posts](https://astro-paper.pages.dev/blog/) or check [the README Documentation Section](#-documentation) for more info.
+This theme is self-documented \_ which means articles/blog in this theme can also be considered as documentations. Read [the blog posts](https://astro-paper.pages.dev/blog/) or check [the README Documentation Section](#-documentation) for more info.
 
 ## 🔥 Features
 
@@ -58,7 +58,6 @@ Inside of AstroPaper, you'll see the following folders and files:
 │   ├── content/
 │   │   |  blog/
 │   │   |    └── some-blog-posts.md
-│   │   └── _schemas.ts
 │   │   └── config.ts
 │   ├── layouts/
 │   └── pages/
@@ -128,17 +127,23 @@ PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                                                                                                           |
-| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| `npm install`          | Installs dependencies                                                                                                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`                                                                                      |
-| `npm run build`        | Build your production site to `./dist/`                                                                                          |
-| `npm run preview`      | Preview your build locally, before deploying                                                                                     |
-| `npm run format:check` | Check code format with Prettier                                                                                                  |
-| `npm run format`       | Format codes with Prettier                                                                                                       |
-| `npm run sync`         | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
-| `npm run cz`           | Commit code changes with commitizen                                                                                              |
-| `npm run lint`         | Lint with ESLint                                                                                                                 |
+> **_Note!_** For `Docker` commands we must have it [installed](https://docs.docker.com/engine/install/) in your machine.
+
+| Command                              | Action                                                                                                                           |
+| :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| `npm install`                        | Installs dependencies                                                                                                            |
+| `npm run dev`                        | Starts local dev server at `localhost:4321`                                                                                      |
+| `npm run build`                      | Build your production site to `./dist/`                                                                                          |
+| `npm run preview`                    | Preview your build locally, before deploying                                                                                     |
+| `npm run format:check`               | Check code format with Prettier                                                                                                  |
+| `npm run format`                     | Format codes with Prettier                                                                                                       |
+| `npm run sync`                       | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
+| `npm run cz`                         | Commit code changes with commitizen                                                                                              |
+| `npm run lint`                       | Lint with ESLint                                                                                                                 |
+| `docker compose up -d`               | Run AstroPaper on docker, You can access with the same hostname and port informed on `dev` command.                              |
+| `docker compose run app npm install` | You can run any command above into the docker container.                                                                         |
+
+> **_Warning!_** Windows PowerShell users may need to install the [concurrently package](https://www.npmjs.com/package/concurrently) if they want to [run diagnostics](https://docs.astro.build/en/reference/cli-reference/#astro-check) during development (`astro check --watch & astro dev`). For more info, see [this issue](https://github.com/satnaing/astro-paper/issues/113).
 
 ## ✨ Feedback & Suggestions
 
@@ -150,4 +155,4 @@ Licensed under the MIT License, Copyright © 2023
 
 ---
 
-Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻
+Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).

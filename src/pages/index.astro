@@ -8,13 +8,13 @@ import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
-import slugify from "@utils/slugify";
 import { SOCIALS } from "@config";
 
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>agmmnn</h1>
+      <h1>Gokce Merdun</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -31,22 +31,35 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         aria-label="rss feed"
         title="RSS Feed"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="rss-icon"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
           ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
+            fill-rule="evenodd"
+            d="M11.285 9.775A1.249 1.249 0 0 1 12 7.5a1.25 1.25 0 0 1 .716 2.275l2.49 7.471a.75.75 0 0 1 .011.033l1.495 4.484a.75.75 0 0 1-1.423.474l-1.33-3.987h-3.918l-1.33 3.987a.75.75 0 0 1-1.422-.474l1.494-4.484a.764.764 0 0 1 .011-.033zM12 12.372l1.46 4.378h-2.92z"
+            clip-rule="evenodd"></path><path
+            d="M12 2.75c-3.446 0-6.25 2.817-6.25 6.305a6.31 6.31 0 0 0 1.795 4.421a.75.75 0 0 1-1.074 1.048a7.81 7.81 0 0 1-2.221-5.47C4.25 4.75 7.714 1.25 12 1.25s7.75 3.5 7.75 7.805a7.81 7.81 0 0 1-2.186 5.433a.75.75 0 1 1-1.08-1.04a6.31 6.31 0 0 0 1.766-4.393c0-3.488-2.804-6.305-6.25-6.305"
+            opacity=".4"></path><path
+            d="M12 5.572c-1.9 0-3.45 1.554-3.45 3.483c0 .946.372 1.801.977 2.429a.75.75 0 0 1-1.08 1.041a4.986 4.986 0 0 1-1.397-3.47c0-2.747 2.21-4.983 4.95-4.983s4.95 2.236 4.95 4.983a4.986 4.986 0 0 1-1.362 3.432a.75.75 0 1 1-1.09-1.03c.59-.625.952-1.47.952-2.402c0-1.93-1.55-3.483-3.45-3.483"
+            opacity=".7"></path></svg
+        >
+        <span class="sr-only">RSS Feed</span>
       </a>
 
       <p>
-        Hey it is Gökçe, mostly writing in Typescript, Python and Rust. The frameworks that I like to use are Next.js, React, Prisma, Tauri, Plasmo. Fan of terminal UI. Pentesting and reverse engineering in spare time.
+        Hey it is Gökçe, mostly writing in Typescript, Python and Rust. The
+        frameworks that I like to use are Next.js, React, Prisma, Tauri, Plasmo.
+        Fan of terminal UI. Pentesting and reverse engineering in spare time.
       </p>
+
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
+            <div class="social-links" />
             <Socials />
           </div>
         )
@@ -61,47 +74,50 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <section id="featured">
             <h2>Featured</h2>
             <ul>
-              {featuredPosts.map(({ data }) => (
+              {featuredPosts.map(({ data, slug }) => (
                 <Card
-                  href={`/blog/${slugify(data)}`}
+                  href={`/blog/${slug}/`}
                   frontmatter={data}
                   secHeading={false}
                 />
               ))}
             </ul>
           </section>
-          <Hr />
+          {recentPosts.length > 0 && <Hr />}
         </>
       )
     }
 
-    <section id="recent-posts">
-      <h2>Recent Posts</h2>
-      <ul>
-        {
-          sortedPosts.map(
-            ({ data }, index) =>
-              index < 4 && (
-                <Card
-                  href={`/blog/${slugify(data)}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              )
-          )
-        }
-      </ul>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/blog">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts">
+          <h2>Recent Posts</h2>
+          <ul>
+            {recentPosts.map(
+              ({ data, slug }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/blog/${slug}/`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="all-posts-btn-wrapper">
+      <LinkButton href="/blog/">
+        All Posts
+        <svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+          ></path>
+        </svg>
+      </LinkButton>
+    </div>
   </main>
 
   <Footer />
@@ -110,7 +126,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pt-8 pb-6;
+    @apply pb-6 pt-2;
   }
   #hero h1 {
     @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
@@ -119,7 +135,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply mb-6;
   }
   #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+    @apply mb-4 h-6 w-6 scale-110 fill-skin-accent/40 sm:mb-5 sm:scale-125;
   }
   #hero p {
     @apply my-2;
@@ -128,13 +144,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply mt-4 flex flex-col sm:flex-row sm:items-center;
   }
   .social-links {
-    @apply mr-2 mb-1 whitespace-nowrap sm:mb-0;
+    @apply mb-1 mr-0 whitespace-nowrap sm:mb-0;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
   #recent-posts {
-    @apply pt-12 pb-6;
+    @apply pb-6 pt-12;
   }
   #featured h2,
   #recent-posts h2 {

@@ -18,6 +18,10 @@ module.exports = {
     },
 
     extend: {
+      fontFamily: {
+        sans: ["Geist", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "monospace"],
+      },
       textColor: {
         skin: {
           base: withOpacity("--color-text-base"),
@@ -53,10 +57,6 @@ module.exports = {
         },
         transparent: "transparent",
       },
-      fontFamily: {
-        mono: ["Roboto Mono", "monospace"],
-      },
-
       typography: {
         DEFAULT: {
           css: {

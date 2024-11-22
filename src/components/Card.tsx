@@ -9,7 +9,7 @@ export interface Props {
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, modDatetime, description } = frontmatter;
+  const { title, pubDatetime, modDatetime, description, ogImage } = frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -28,7 +28,24 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
           <h3 {...headerProps}>{title}</h3>
         )}
       </a>
-      <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} />
+      <a href={href} className="">
+        {ogImage && (
+          <div className="relative my-1 h-32 overflow-hidden rounded-lg">
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/0 via-black/10 to-black/50"></div>
+            <img
+              src={typeof ogImage === "string" ? ogImage : ogImage.src}
+              alt={`Preview image for ${title}`}
+              className="w-full object-cover"
+              style={{ height: "128px" }}
+            />
+          </div>
+        )}
+      </a>
+      <Datetime
+        pubDatetime={pubDatetime}
+        modDatetime={modDatetime}
+        className="mb-3"
+      />
       <p>{description}</p>
     </li>
   );
